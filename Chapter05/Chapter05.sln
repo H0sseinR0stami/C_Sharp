@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PeopleApp", "PeopleApp\PeopleApp.csproj", "{62C133C0-F194-4830-BBE9-ACB26FFB4A54}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PacktLibrary", "PacktLibrary\PacktLibrary.csproj", "{EBC5F821-E069-4084-80B8-602244DE14BE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PacktLibraryModern", "PacktLibraryModern\PacktLibraryModern.csproj", "{E5C78140-232D-448E-B360-AC48618802B0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{62C133C0-F194-4830-BBE9-ACB26FFB4A54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62C133C0-F194-4830-BBE9-ACB26FFB4A54}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62C133C0-F194-4830-BBE9-ACB26FFB4A54}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62C133C0-F194-4830-BBE9-ACB26FFB4A54}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EBC5F821-E069-4084-80B8-602244DE14BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBC5F821-E069-4084-80B8-602244DE14BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBC5F821-E069-4084-80B8-602244DE14BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EBC5F821-E069-4084-80B8-602244DE14BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5C78140-232D-448E-B360-AC48618802B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5C78140-232D-448E-B360-AC48618802B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5C78140-232D-448E-B360-AC48618802B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5C78140-232D-448E-B360-AC48618802B0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
