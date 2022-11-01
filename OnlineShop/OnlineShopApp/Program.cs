@@ -1,15 +1,64 @@
 ﻿using static System.Console;
 
 using OnlineShop;
+using System.Diagnostics;
+using System.Xml.Linq;
 
 
 
+ static void Greeting()
+{
+    WriteLine("-------------------------------------------------");
+    WriteLine("|              Welcome to our shop!              |");
+    WriteLine("|  Please select a number from the list below    |");
+    WriteLine("-------------------------------------------------");
+}
 
-SuperClass.Greeting();
+static int ListOfGoods()
+{
+    string[] Goods = { "Books", "Electronic Devices", "Clothes" };
 
-int NumberOfGoods = SuperClass.ListOfGoods();
+    for (int i = 0; i < Goods.Length; i++)
+    {
+        WriteLine($"{i + 1}. {Goods[i]}");
+    }
+    return Goods.Length;
+}
 
-int? item = SuperClass.GetInput(NumberOfGoods);
+static int GetInput(int max)
+{
+    int OutNumber = -1;
+    var validInput = false;
+    Console.WriteLine("Please select a number from the list above ");
+    while (!validInput)
+    {
+        var playerChoice = -1;
+
+        int.TryParse(Console.ReadLine(), out playerChoice);
+        if (playerChoice > 0 && playerChoice <= max)
+        {
+            validInput = true;
+            OutNumber = playerChoice;
+        }
+        else
+        {
+            WriteLine();
+            WriteLine();
+            WriteLine();
+            Console.WriteLine($"You have entered '{playerChoice}' which is an invalid choice!");
+            Console.WriteLine($"Please select a valid number from 1 to {max}");
+            validInput = false;
+        }
+    }
+    return OutNumber;
+}
+
+
+Greeting();
+
+int NumberOfGoods = ListOfGoods();
+
+int? item = GetInput(NumberOfGoods);
 Clear();
 
 switch (item)
@@ -33,7 +82,7 @@ switch (item)
         }
         WriteLine(" -------------------------------");
 
-        int? choice1 = SuperClass.GetInput(BookList.Count);
+        int? choice1 = GetInput(BookList.Count);
         Clear();
 
         switch (choice1)
@@ -70,7 +119,7 @@ switch (item)
         }
         WriteLine(" ---------------------------------------------");
 
-        int? choice2 = SuperClass.GetInput(ElectronicDevicesList.Count);
+        int? choice2 = GetInput(ElectronicDevicesList.Count);
         Clear();
 
         switch (choice2)
@@ -105,7 +154,7 @@ switch (item)
         }
         WriteLine(" --------------------------------");
 
-        int? choice3 = SuperClass.GetInput(ClothList.Count);
+        int? choice3 = GetInput(ClothList.Count);
         Clear();
 
         switch (choice3)
