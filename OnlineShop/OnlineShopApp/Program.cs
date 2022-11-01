@@ -7,11 +7,14 @@ using OnlineShop;
 
 SuperClass.Greeting();
 
-SuperClass.ListOfGoods();
+int NumberOfGoods = SuperClass.ListOfGoods();
 
-switch (ReadLine())
+int? item = SuperClass.GetInput(NumberOfGoods);
+Clear();
+
+switch (item)
 {
-    case "1":
+    case 1:
 
         //list of books
         List<Book> BookList = new List<Book>
@@ -21,28 +24,34 @@ switch (ReadLine())
             new Book { Name="White Fang", Price = 30, Author = "Jack London", DateOfPublish = new(1906, 01, 01) }
         };
 
-        WriteLine("List of available books are:");
-        for(int i = 0; i < BookList.Count; i++)
+        WriteLine(" ------------------------------");
+        WriteLine("| List of available books are:  |");
+        WriteLine(" ------------------------------");
+        for (int i = 0; i < BookList.Count; i++)
         {
             WriteLine($"{i+1}. {BookList[i].Name}");
         }
+        WriteLine(" -------------------------------");
 
-        switch (ReadLine())
+        int? choice1 = SuperClass.GetInput(BookList.Count);
+        Clear();
+
+        switch (choice1)
         {
-            case "1":
+            case 1:
                 BookList[0].PrintCongrad();
                 break;
-            case "2":
+            case 2:
                 BookList[1].PrintCongrad();
                 break;
-            case "3":
-                BookList[3].PrintCongrad();
+            case 3:
+                BookList[2].PrintCongrad();
                 break;
         }
         break;
 
 
-    case "2":
+    case 2:
 
         //Electronic Devices
         List<ElectronicDevice> ElectronicDevicesList = new List<ElectronicDevice>
@@ -52,26 +61,32 @@ switch (ReadLine())
             new ElectronicDevice {Name = "Mobile Phone", Price = 50 , Color = "Samsung" , Company ="Black" }
         };
 
-        WriteLine("List of available Electronic Devices are:");
+        WriteLine(" ---------------------------------------------");
+        WriteLine("| List of available Electronic Devices are:   |");
+        WriteLine(" ---------------------------------------------");
         for (int i = 0; i < ElectronicDevicesList.Count; i++)
         {
             WriteLine($"{i + 1}. {ElectronicDevicesList[i].Name}");
         }
+        WriteLine(" ---------------------------------------------");
 
-        switch (ReadLine())
+        int? choice2 = SuperClass.GetInput(ElectronicDevicesList.Count);
+        Clear();
+
+        switch (choice2)
         {
-            case "1":
+            case 1:
                 ElectronicDevicesList[0].PrintCongrad();
                 break;
-            case "2":
+            case 2:
                 ElectronicDevicesList[1].PrintCongrad();
                 break;
-            case "3":
+            case 3:
                 ElectronicDevicesList[2].PrintCongrad();
                 break;
         }
         break;
-    case "3":
+    case 3:
 
         //Clothes
         List<Cloth> ClothList = new List<Cloth>
@@ -81,21 +96,27 @@ switch (ReadLine())
             new Cloth {Name = "Shoes", Price = 50 , Color = "Under Armor" , Company ="White" }
         };
 
-        WriteLine("List of available Clothes are:");
+        WriteLine(" --------------------------------");
+        WriteLine("| List of available Clothes are: |");
+        WriteLine(" --------------------------------");
         for (int i = 0; i < ClothList.Count; i++)
         {
             WriteLine($"{i + 1}. {ClothList[i].Name}");
         }
+        WriteLine(" --------------------------------");
 
-        switch (ReadLine())
+        int? choice3 = SuperClass.GetInput(ClothList.Count);
+        Clear();
+
+        switch (choice3)
         {
-            case "1":
+            case 1:
                 ClothList[0].PrintCongrad();
                 break;
-            case "2":
+            case 2:
                 ClothList[1].PrintCongrad();
                 break;
-            case "3":
+            case 3:
                 ClothList[2].PrintCongrad();
                 break;
         }
