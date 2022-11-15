@@ -34,8 +34,7 @@ public class Customer
                 person.InitBalance = Convert.ToInt32(Console.ReadLine());
                 person.Balance = new List<int>();
                 if (person.InitBalance >= 0)
-                {
-          
+                {          
                     person.Balance.Add(person.InitBalance);
                 }
                 else
@@ -55,6 +54,7 @@ public class Customer
                 Console.WriteLine("Initial Value is a Valid positive number!");
             }
             Customers.Add(person);
+            FileHandler.Logger($"New Customer with Bank Account {person.BankAccountNumber} has been added");
 
             Console.Write("Press Y to enter another person, other key to finish.");
             Console.WriteLine();
@@ -81,8 +81,11 @@ public class Customer
                     {
                         NotFound= false;
                         Console.WriteLine("Enter the Change Value Amount:");
-                        int ChangeValue = Convert.ToInt32(Console.ReadLine());
+                        int ChangeValue = Convert.ToInt32(Console.ReadLine());                        
+
                         int result = ChangeValue + item.Balance.Last();
+                        FileHandler.Logger($"balance was = {item.Balance.Last()} and with diffAmount={ChangeValue}  the new balance={result} ");
+
                         if (result >= 0)
                         {
                             item.Balance.Add(result);
@@ -136,10 +139,12 @@ public class Customer
                     {
                         NotFound = false;
                         Console.WriteLine("Enter the Number of Transaction to display:");
-                        int n = Convert.ToInt32(Console.ReadLine());
+                        int n = Convert.ToInt32(Console.ReadLine());                        
                         int max = item.Balance.Count;
                         if (n > max)
                         { n = max; }
+
+                        FileHandler.Logger($"Showing last {n} transactions of bank account {item.BankAccountNumber}");
 
                         for (int i = max - 1; i >= max - n; --i)
                         {

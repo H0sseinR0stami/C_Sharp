@@ -29,21 +29,28 @@ do
     switch (choice)
     {
         case "1":
+            FileHandler.Logger($"Creating new customer");
             Customers = Customer.GetNewCustomer();
             break;
 
         case"2":
-            Customer.CalculateBalance(Customers); 
+            FileHandler.Logger("new transaction started");
+            Customer.CalculateBalance(Customers);
+            
             break;
 
         case "3":
+            FileHandler.Logger("Showing all bank accounts");
             Customer.ShowAllBankAccount(Customers);
+            
             break;
 
         case "4":
+            
             Customer.ShowNTransactions(Customers);
+            
             break;
-
+            
 
     }
 
