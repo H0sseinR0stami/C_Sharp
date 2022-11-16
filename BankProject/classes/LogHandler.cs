@@ -8,7 +8,7 @@ using static System.IO.Path;
 using static System.Environment;
 namespace BankCustomer
 {
-    public class FileHandler
+    public class LogHandler
     {
 
         public static void VerifyDir(string path)

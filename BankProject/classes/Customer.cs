@@ -13,7 +13,7 @@ public class Customer
     public List<int>? Balance { get; set; }
 
     //register new customer
-    public static List<Customer> GetNewCustomer()
+    public List<Customer> GetNewCustomer()
     {
 
         List<Customer> Customers = new List<Customer>();
@@ -54,7 +54,7 @@ public class Customer
                 Console.WriteLine("Initial Value is a Valid positive number!");
             }
             Customers.Add(person);
-            FileHandler.Logger($"New Customer with Bank Account {person.BankAccountNumber} has been added");
+            LogHandler.Logger($"New Customer with Bank Account {person.BankAccountNumber} has been added");
 
             Console.Write("Press Y to enter another person, other key to finish.");
             Console.WriteLine();
@@ -64,112 +64,28 @@ public class Customer
     }
 
     // add and subtract amount 
-    public static void CalculateBalance(List<Customer> Customers)
-    {
-        bool NotFound = true;
-        if (Customers.Count > 0)
+    public int CalculateBalance(int balance, int ChangeValue)
+    {                     
+        int result = ChangeValue + balance;
+        if (result >= 0)
         {
-            try
-            {
-                Console.Clear();
-                Console.WriteLine();
-                Console.WriteLine("Enter the Bank Account:");
-                string? BankAccount = Console.ReadLine();
-                foreach (var item in Customers)
-                {
-                    if (item.BankAccountNumber == BankAccount)
-                    {
-                        NotFound= false;
-                        Console.WriteLine("Enter the Change Value Amount:");
-                        int ChangeValue = Convert.ToInt32(Console.ReadLine());                        
-
-                        int result = ChangeValue + item.Balance.Last();
-                        FileHandler.Logger($"balance was = {item.Balance.Last()} and with diffAmount={ChangeValue}  the new balance={result} ");
-
-                        if (result >= 0)
-                        {
-                            item.Balance.Add(result);
-                        }
-                        else
-                        {
-                            Console.WriteLine("it is not possible! not enough money!");
-                        }
-                        
-                        Console.WriteLine($"new balance = {item.Balance.Last()}");
-                    }
-
-                }
-                if (NotFound)
-                {
-                    Console.WriteLine("Bank Account Not found!");
-                }
-            }
-            catch (Exception e)
-            {
-
-                Console.WriteLine(e.Message);
-                Console.WriteLine("Try again");
-            }
+            LogHandler.Logger($"balance was = {balance} and with diffAmount={ChangeValue}  the new balance={result} ");
         }
-        else
-        {
-            Console.Clear();
-            Console.WriteLine("No Customer have been Registered yet!");
-        }
-    
+            
+        return result;
     }
 
     //show N transaction
-    public static void ShowNTransactions(List<Customer> Customers)
+    public void ShowNTransactions(int n, List<int> balance )
     {
-        bool NotFound = true;
-
-        if (Customers.Count > 0)
+        int max = balance.Count;
+        if (n > max)
+        { n = max; }
+        for (int i = max - 1; i >= max - n; --i)
         {
-            try
-            {
-                Console.Clear();
-                Console.WriteLine();
-                Console.WriteLine("Enter the Bank Account:");
-                string? BankAccount = Console.ReadLine();
-
-                foreach (var item in Customers)
-                {
-                    if (item.BankAccountNumber == BankAccount)
-                    {
-                        NotFound = false;
-                        Console.WriteLine("Enter the Number of Transaction to display:");
-                        int n = Convert.ToInt32(Console.ReadLine());                        
-                        int max = item.Balance.Count;
-                        if (n > max)
-                        { n = max; }
-
-                        FileHandler.Logger($"Showing last {n} transactions of bank account {item.BankAccountNumber}");
-
-                        for (int i = max - 1; i >= max - n; --i)
-                        {
-                            Console.WriteLine($"balance {i} =  {item.Balance[i]}");
-                        }
-                        Console.WriteLine($"Changed amount in {n} transactions : {item.Balance.Last() - item.Balance[max - n]}");
-                    }
-                }
-                if(NotFound)
-                {
-                    Console.WriteLine("Bank Account Not found!");
-                }
-            }
-            catch (Exception e)
-            {
-
-                Console.WriteLine(e.Message);
-                Console.WriteLine("Try again");
-            }
+            Console.WriteLine($"balance {i} =  {balance[i]}");
         }
-        else
-        {
-            Console.Clear();
-            Console.WriteLine("No Customer have been Registered yet!");
-        }
+        Console.WriteLine($"Changed amount in {n} transactions : {balance.Last() - balance[max - n]}");
     }
 
     public static void ShowAllBankAccount(List<Customer> Customers)
@@ -195,7 +111,8 @@ public class Customer
         {
 
             Console.WriteLine(e.Message);
-            Console.WriteLine("Try again"); 
+            Console.WriteLine("Try again");
+            LogHandler.Logger($"while showing all bank accounts {e.Message} error happend");
         }
 
     }
