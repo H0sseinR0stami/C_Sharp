@@ -78,7 +78,7 @@ do
 
                     Console.WriteLine(e.Message);
                     Console.WriteLine("Try again");
-                    LogHandler.Logger($"while doing transaction {e.Message} error happend");
+                    LogHandler.Logger($"while doing transaction {e.Message} error has happend");
                 }
             }
             else
@@ -130,7 +130,7 @@ do
 
                     Console.WriteLine(e.Message);
                     Console.WriteLine("Try again");
-                    LogHandler.Logger($"while Showing last N transactions  {e.Message} error happend");
+                    LogHandler.Logger($"while Showing last N transactions  {e.Message} error has happend");
                 }
             }
             else

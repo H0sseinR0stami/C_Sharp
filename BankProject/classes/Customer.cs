@@ -52,6 +52,7 @@ public class Customer
 
                 Console.WriteLine(e.Message);
                 Console.WriteLine("Initial Value is a Valid positive number!");
+                LogHandler.Logger($"while adding new customer {e.Message} error has happend");
             }
             Customers.Add(person);
             LogHandler.Logger($"New Customer with Bank Account {person.BankAccountNumber} has been added");
@@ -112,7 +113,7 @@ public class Customer
 
             Console.WriteLine(e.Message);
             Console.WriteLine("Try again");
-            LogHandler.Logger($"while showing all bank accounts {e.Message} error happend");
+            LogHandler.Logger($"while showing all bank accounts {e.Message} error has happend");
         }
 
     }
